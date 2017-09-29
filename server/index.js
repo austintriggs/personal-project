@@ -15,11 +15,11 @@ massive(process.env.CONNECTION_STRING)
 app.use(bodyParser.json());
 app.use(cors());
 
-// app.use(session({
-//     secret: 'asdf',
-//     resave: false,
-//     saveUninitialized: false
-// }))
+app.use(session({
+    secret: 'asdf',
+    resave: false,
+    saveUninitialized: false
+}))
 
 
 
@@ -37,20 +37,23 @@ app.get('/api/product/:id', (req, res) => {
     }).catch((err) => {console.log(err)})
 })
 
-// app.post('/api/addtocart', (req, res)=>{
-//     console.log(req.body);
-//     if (!req.session.cart) {
-//         req.session.cart = [];
-//     }
-//     req.session.cart.push(req.body)
+app.get('/api/cart', (req, res)=>{
+    res.json(req.session.cart)
+})
 
-//         res.json(req.session.cart)
+app.post('/api/addtocart', (req, res)=>{
+    console.log(req.body);
+    if (!req.session.cart) {
+        req.session.cart = [];
+    }
+    req.session.cart.push(req.body)
 
-// })
+        res.json(req.session.cart)
+
+})
 
 
 const port = 3030;
 app.listen(port, function(){
     console.log(`Running on port ${port}`);
 })
-

@@ -20,11 +20,17 @@ class Whistle3 extends Component {
         })
       }
 
+      storeToCart(product){
+        axios.post('/api/addtocart', product)
+    }
+
     render() {
         const displayProducts = this.state.products.map((elem)=>{
             return (
               <div>
+                <button onClick={() => {this.storeToCart(elem)}}>Add to cart</button>
                 <h3 className="productName">{elem.name}</h3>
+                <h4 className="productDescription">{elem.description}</h4>
                 <p className="productPrice">${elem.price}</p>
                 <img className="productImg" src={elem.img} alt="" />
               </div>
@@ -33,10 +39,7 @@ class Whistle3 extends Component {
 
         return (
             <div>
-                    {displayProducts}
-                <h1>
-                    I am the Whistle 3 component
-                </h1>
+              {displayProducts}
             </div>
         );
     }
