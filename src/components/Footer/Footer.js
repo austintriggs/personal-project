@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import './Footer.css';
-import { Link } from 'react-router-dom';
 
 class Footer extends Component {
     render() {
         return (
-            <div class="footer">
+            <div className="footer">
                 {/* This is the footer. */}
-                <div class="top-row">
-                    <div class="social">
-                        <img className="facebook" src={require(`../../assets/asset 41.png`)} />
-                        <img className="instagram" src={require(`../../assets/asset 42.png`)} />
-                        <img className="twitter" src={require(`../../assets/asset 43.png`)} />
-                        <img className="pinterest" src={require(`../../assets/asset 44.png`)} />
+                <div className="top-row">
+                    <div className="social">
+                        <img className="facebook" src={require(`../../assets/asset 41.png`)} alt="" />
+                        <img className="instagram" src={require(`../../assets/asset 42.png`)} alt="" />
+                        <img className="twitter" src={require(`../../assets/asset 43.png`)} alt="" />
+                        <img className="pinterest" src={require(`../../assets/asset 44.png`)} alt="" />
                     </div>
                 </div>
-                <div class="bottom-row">
-                    <ul class="links">
+                <div className="bottom-row">
+                    <ul className="links">
                         <li>Company</li>
                         <li>Careers</li>
                         <li>Log In</li>
