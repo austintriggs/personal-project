@@ -3,6 +3,7 @@ import './Nav.css';
 import { Link } from 'react-router-dom';
 import BuyNowBtn from '../Button/BuyNowBtn';
 import LearnMoreBtn from '../Button/LearnMoreBtn';
+import CartBtn from '../Button/CartBtn';
 
 class Nav extends Component {
     render() {
@@ -13,6 +14,7 @@ class Nav extends Component {
                     <Link to ="/support">Support</Link>
                     <BuyNowBtn />
                     <LearnMoreBtn />
+                    <CartBtn />
                 </h4>
             </div>
         );

@@ -37,21 +37,25 @@ app.get('/api/product/:id', (req, res) => {
     }).catch((err) => {console.log(err)})
 })
 
-app.get('/api/cart', (req, res)=>{
-    res.json(req.session.cart)
-})
 
 app.post('/api/addtocart', (req, res)=>{
-    console.log(req.body);
     if (!req.session.cart) {
         req.session.cart = [];
     }
     req.session.cart.push(req.body)
-
-        res.json(req.session.cart)
-
+    
+    res.json(req.session.cart)
+    
 })
 
+app.get('/api/cart', (req, res)=>{
+    if (req.session.cart) {
+    res.json(req.session.cart)
+    } else {
+        req.session.cart = []
+    res.json(req.session.cart)
+}
+})
 
 const port = 3030;
 app.listen(port, function(){

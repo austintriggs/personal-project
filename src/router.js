@@ -5,6 +5,7 @@ import FAQ from './components/FAQ/FAQ';
 import Support from './components/Support/Support';
 import Whistle3 from './components/Products/Whistle3';
 import LearnMore from './components/Products/LearnMore';
+import Cart from './components/Cart/Cart';
 
 
 export default (
@@ -14,5 +15,6 @@ export default (
         <Route component={Support} path="/support" />
         <Route component={Whistle3} path="/products/whistle3" />
         <Route component={LearnMore} path="/how-whistle-3-works" />
+        <Route component={Cart} path="/cart" />
     </Switch>
 )

@@ -4,14 +4,16 @@ import axios from 'axios';
 class Cart extends Component {
     constructor(){
         super()
+
         this.state = {
             cart: []
         }
     }
 
 
-    getCart(){
+    componentDidMount(){
         axios.get('/api/cart').then((response)=>{
+            console.log('componentDidMountcart',response);
             this.setState({
                 cart: response.data
             })
@@ -20,6 +22,7 @@ class Cart extends Component {
 
 
     render() {
+        console.log('rendercart',this.state.cart);
         const displayCart = this.state.cart.map((elem)=>{
             return (
               <div>
@@ -31,8 +34,6 @@ class Cart extends Component {
           })
         return (
             <div>
-                <h2>This is the cart component.</h2>
-                <button onClick={()=>{this.getCart()}}>Cart</button>
                 {displayCart}
             </div>
         );
