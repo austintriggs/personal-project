@@ -13,7 +13,6 @@ class Cart extends Component {
 
     componentDidMount(){
         axios.get('/api/cart').then((response)=>{
-            console.log('componentDidMountcart',response);
             this.setState({
                 cart: response.data
             })
@@ -22,12 +21,14 @@ class Cart extends Component {
 
 
     render() {
-        console.log('rendercart',this.state.cart);
         const displayCart = this.state.cart.map((elem)=>{
             return (
               <div>
                 <h3>{elem.name}</h3>
                 <p>${elem.price}</p>
+                <button onClick={
+                    (e)=>this.state.cart.indexOf(e)
+                    }> Remove </button>
                 <br/>
               </div>
             )

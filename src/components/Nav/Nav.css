@@ -1,8 +1,23 @@
 .Nav_header {
-    background: blanchedalmond;
-    color: blue;
+	align-items: center;
+	background-color: #303e4c;
+	box-sizing: border-box;
+	color: #ffffff;
+	display: flex;
+	height: 75px;
+    padding: 50px;
+    justify-content: center;
+    flex-direction: row;
+    flex-flow: row wrap;
 }
 
-.Nav_header h4 link {
+.Nav_header h4 {
+    flex-direction: row;
+    display: flex;
+    align-items: center
+}
+
+.Nav_header h4 :any-link {
     text-decoration: none;
+    color: white;
 }

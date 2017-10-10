@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import './Whistle3.css';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+
+import { getProducts } from '../../ducks/reducer';
+
 class Whistle3 extends Component {
     constructor(){
         super()
       
-        this.state = {
-          products: []
-        }
     }
-
+    
     componentDidMount(){
-        axios.get('/api/products').then((response)=>{
-          this.setState({
-            products: response.data
-          })
-        })
+        this.props.getProducts()
       }
 
       storeToCart(product){
@@ -25,14 +22,14 @@ class Whistle3 extends Component {
     }
 
     render() {
-        const displayProducts = this.state.products.map((elem)=>{
+        const displayProducts = this.props.products.map((elem)=>{
             return (
               <div key={elem.id}>
                 <h3 className="productName">{elem.name}</h3>
                 <h4 className="productDescription">{elem.description}</h4>
                 <p className="productPrice">${elem.price}</p>
                 <img className="productImg" src={elem.img} alt="" />
-                <button onClick={() => {this.storeToCart(elem)}}>Add to cart</button>
+                <button className="productBtn" onClick={() => {this.storeToCart(elem)}}>Add to cart</button>
               </div>
             )
           })
@@ -45,4 +42,10 @@ class Whistle3 extends Component {
     }
 }
 
-export default Whistle3;
+function mapStateToProps(state) {
+  return {
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, { getProducts })(Whistle3);
