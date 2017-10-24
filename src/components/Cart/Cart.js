@@ -8,6 +8,7 @@ class Cart extends Component {
         this.state = {
             cart: []
         }
+        this.removeFromCart = this.removeFromCart.bind(this)        
     }
 
 
@@ -18,6 +19,14 @@ class Cart extends Component {
             })
         })
     }
+    
+    removeFromCart(id){
+        axios.delete(`/api/cart/${id}`).then((response=>{
+            this.setState({
+                cart: response.data
+            })
+        }))
+    }
 
 
     render() {
@@ -26,9 +35,7 @@ class Cart extends Component {
               <div>
                 <h3>{elem.name}</h3>
                 <p>${elem.price}</p>
-                <button onClick={
-                    (e)=>this.state.cart.indexOf(e)
-                    }> Remove </button>
+                <button onClick={() => this.removeFromCart(elem.id)}> Remove </button>
                 <br/>
               </div>
             )

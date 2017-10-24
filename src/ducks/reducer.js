@@ -16,7 +16,6 @@ export default function reducer(state = initialState, action) {
         //     // break;
         case GET_PRODUCTS + '_FULFILLED':
             return Object.assign ({}, state, {products: action.payload})
-            break;
         default:
            return state;
     }

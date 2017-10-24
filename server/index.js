@@ -57,6 +57,17 @@ app.get('/api/cart', (req, res)=>{
 }
 })
 
+app.delete('/api/cart/:id', (req, res)=>{
+    // console.log('app.delete',req.session.cart)
+    var reqId = +req.params.id
+    // console.log(reqId);
+    var elementPos = req.session.cart.map(function(x) {return x.id}).indexOf(reqId);
+    // console.log('req params', [req.params.id])
+    // console.log(elementPos)
+    req.session.cart.splice(elementPos, 1);
+    res.json(req.session.cart);
+})
+
 const port = 3030;
 app.listen(port, function(){
     console.log(`Running on port ${port}`);
