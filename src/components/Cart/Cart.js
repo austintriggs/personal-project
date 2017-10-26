@@ -5,34 +5,27 @@ class Cart extends Component {
     constructor(){
         super()
 
-        this.state = {
-            cart: []
-        }
         this.removeFromCart = this.removeFromCart.bind(this)        
     }
 
 
     componentDidMount(){
-        axios.get('/api/cart').then((response)=>{
-            this.setState({
-                cart: response.data
-            })
-        })
+        
     }
     
     removeFromCart(id){
         axios.delete(`/api/cart/${id}`).then((response=>{
             this.setState({
                 cart: response.data
-            })
+            },this.props.getCart)
         }))
     }
 
 
     render() {
-        const displayCart = this.state.cart.map((elem)=>{
+        const displayCart = this.props.cart.map((elem,i)=>{
             return (
-              <div>
+              <div key={i}>
                 <h3>{elem.name}</h3>
                 <p>${elem.price}</p>
                 <button onClick={() => this.removeFromCart(elem.id)}> Remove </button>

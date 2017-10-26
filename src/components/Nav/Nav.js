@@ -15,6 +15,7 @@ class Nav extends Component {
                     <BuyNowBtn />
                     <LearnMoreBtn />
                     <CartBtn />
+                    {this.props.cart[0] ? this.props.cart.length : null}
                 </h4>
             </div>
         );

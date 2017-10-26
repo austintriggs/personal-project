@@ -10,3 +10,8 @@
     -webkit-transition: all 1s;
     transition: all 1s;
 }
+
+#qty {
+    width: 30px;
+    text-align: center;
+}

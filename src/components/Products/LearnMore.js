@@ -9,7 +9,7 @@ class LearnMore extends Component {
                 Explore Whistle 3
                 </h1>
                 <p>
-                Whistle 3 uses smart technology to track your pet’s location and activity. You’ll know more about your pet—and more about what they need—for a longer, happier life together.
+            Whistle 3 uses smart technology to track your pet’s location and activity. You’ll know more about your pet—and more about what they need—for a longer, happier life together.
                 </p>
             </div>
         );

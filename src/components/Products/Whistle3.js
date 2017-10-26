@@ -16,20 +16,20 @@ class Whistle3 extends Component {
         this.props.getProducts()
       }
 
-      storeToCart(product){
-        console.log('product',product)
-        axios.post('/api/addtocart', product)
-    }
-
     render() {
-        const displayProducts = this.props.products.map((elem)=>{
+        const displayProducts = this.props.products.map((elem, i)=>{
+          if (!elem.qty) {
+            elem.qty = 1
+          } 
             return (
               <div key={elem.id}>
                 <h3 className="productName">{elem.name}</h3>
                 <h4 className="productDescription">{elem.description}</h4>
                 <p className="productPrice">${elem.price}</p>
                 <img className="productImg" src={elem.img} alt="" />
-                <button className="productBtn" onClick={() => {this.storeToCart(elem)}}>Add to cart</button>
+                <input type="number" value={elem.qty} min="1" id="qty" 
+                onChange={(e)=> {this.props.updateQuantity(e, i)}}/>
+                <button className="productBtn" onClick={() => {this.props.storeToCart(elem)}}>Add to cart</button>
               </div>
             )
           })
